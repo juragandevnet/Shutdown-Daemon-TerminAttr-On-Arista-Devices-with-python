@@ -2,6 +2,7 @@
 ### https://youtube.com/@juragandevnet ###
 ### https://github.com/juragandevnet  ###
 
+import getpass
 from netmiko import ConnectHandler 
 from threading import Thread
 
@@ -18,8 +19,16 @@ def upload(device_type, username, password, ip_address):
     print(output_hostname)
     print(output_ios)
     net_connect.disconnect()
-
+    
+### READ FILE ###
 f = open('devices.txt','r')  
+
+### INPUT FOR USERNAME AND PASSWORD ###
+username = ("Username: ")
+password = getpass.getpass()
+
+
+### THREAD PROCESS ###
 threads=[]
 threads = [Thread(target=upload, args=('arista_eos','catadmin_2','yj%Ve6Yu~y', ip_address)) for ip_address in f.readlines()]
 for thread in threads:

@@ -2,6 +2,7 @@
 ### https://youtube.com/@juragandevnet ###
 ### https://github.com/juragandevnet  ###
 
+import re
 import getpass
 from netmiko import ConnectHandler 
 from threading import Thread

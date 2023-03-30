@@ -14,7 +14,8 @@ def upload(device_type, username, password, ip_address):
         'password': password 
     }
     net_connect = ConnectHandler(**SshLogin)
-    output_hostname = net_connect.send_command('show run | i hostname')
+    host = net_connect.send_command('show run | i hostname')
+    output_hostname = re.search(r"\b(\w+)$", host)
     output_eos = net_connect.send_config_set(["daemon TerminAttr","shutdown"])
     print(output_hostname)
     print(output_eos)
